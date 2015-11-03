@@ -4,6 +4,7 @@ import (
     "net/http"
     "github.com/gorilla/mux"
     "automata/handlers"
+    "io/ioutil"
     "log"
 )
 
@@ -18,14 +19,10 @@ func main() {
 }
 
 func handleSmoker(w http.ResponseWriter, r *http.Request) {
-    //decoder := json.NewDecoder(r.Body)
-    go handlers.SmokerHandler(r.Body)
-    //Initialize the struct
-    //var smokerUpdate devices.SmokerRead
-    //err := decoder.Decode(&smokerUpdate)
-    //if err != nil {
-    //   panic(err)    
-    //} 
-    //log.Println(smokerUpdate.ID)
+    body, err := ioutil.ReadAll(r.Body)
+    if err != nil {
+        panic(err)
+    }
+    go handlers.SmokerHandler(body)
     w.Write([]byte("OK\n"))
 }

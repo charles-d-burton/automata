@@ -3,19 +3,20 @@ package handlers
 import (
    "encoding/json"
    "automata/devices"
-   "io"
+   "log"
+   "strings"
 )
 
-func SmokerHandler(message io.Reader) bool {
-   decoder := json.NewDecoder(message)
+func SmokerHandler(message []byte) bool {
+   decoder := json.NewDecoder(strings.NewReader(string(message)))
 
    //Initialize the struct
    var smokerUpdate devices.SmokerRead
    err := decoder.Decode(&smokerUpdate)
    if err != nil {
       //panic(err)
-      return false
+      //return false
    }
-
+   log.Println(smokerUpdate.ID) 
    return true
 }
