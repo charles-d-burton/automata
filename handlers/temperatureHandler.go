@@ -7,7 +7,7 @@ import (
    "strings"
 )
 
-func SmokerHandler(message []byte) bool {
+func TempSensorHandler(message []byte) bool {
    decoder := json.NewDecoder(strings.NewReader(string(message)))
 
    //Initialize the struct
