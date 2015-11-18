@@ -1,0 +1,15 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch automata",
+			"type": "go",
+			"request": "launch",
+			"program": "automata",
+			"stopOnEntry": false,
+			"env": {},
+			"args": [],
+			"cwd": "."
+		}
+	]
+}
