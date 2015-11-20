@@ -1,6 +1,9 @@
 package devices
 
-type TemperatureSensor struct {
-   Device
-   Reading float32
-}
+/*
+TemperatureRead ...  Handles marshalling of temperature reading
+*/
+
+type TemperatureRead struct {
+   Reading float32 `json:"reading"`
+} `json:"temperature_read"`
