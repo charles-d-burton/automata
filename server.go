@@ -4,6 +4,8 @@ import (
     "net/http"
     "github.com/gorilla/mux"
     "automata/routes"
+    "encoding/json"
+    "automata/devices"
     "log"
 )
 
@@ -22,6 +24,13 @@ func main() {
 
     // Bind to a port and pass our router in
     log.Println("Listening on port 8000")
+    smoker := devices.SmokerWrite{5,"hello"}
+    device := devices.DeviceSend{"id", smoker}
+    json, err := json.Marshal(device)
+    if err != nil {
+        
+    }
+    log.Println(string(json))
     log.Fatal(http.ListenAndServe(":8000", rtr))
 }
 
